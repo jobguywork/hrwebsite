@@ -1,0 +1,166 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: $main-font;
+  font-size: $main-font-size;
+  line-height: $main-line-height-ltr;
+  color: $text-color;
+  background: $background-color;
+}
+
+button,
+select,
+textarea,
+input {
+  font-family: $main-font;
+}
+
+a {
+  text-decoration: none;
+}
+
+// ===
+// Base element styles
+// ===
+
+a,
+a:visited {
+  color: $text-color;
+}
+
+a:hover {
+  color: $text-color-hover;
+}
+
+h1 {
+  font-size: 27px;
+  line-height: 34px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+h5,
+h6 {
+  font-size: 17px;
+  line-height: 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+#nprogress .bar {
+  background: $nprogress-backcolor;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+img[lazy='loaded'] {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+img[lazy='loading'] {
+  // background: url('/images/loading/1.svg') no-repeat center center;
+  width: auto;
+  margin: auto;
+}
+
+.field {
+  margin-bottom: 28px;
+  display: block;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 12px;
+    display: block;
+  }
+}
+
+.ck-editor__editable_inline {
+  min-height: 500px;
+}
+
+.ck.ck-reset_all,
+.ck.ck-reset_all * {
+  font-family: $main-font !important;
+
+}

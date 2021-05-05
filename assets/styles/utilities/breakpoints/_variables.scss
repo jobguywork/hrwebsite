@@ -1,0 +1,20 @@
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  // for-phone
+    xs: 0,
+  // for-tablet-portrait
+    sm: 600px,
+  // for-tablet-landscape
+    md: 900px,
+  // for-desktop
+    lg: 1200px,
+  // for-big-desktop
+    xl: 1800px
+) !default;
+
+@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
+@include _assert-starts-at-zero($grid-breakpoints, '$grid-breakpoints');

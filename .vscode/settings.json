@@ -1,0 +1,44 @@
+{
+  // Set the default
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "path-autocomplete.pathMappings": {
+    "~": "${folder}/",
+    "@": "${folder}/"
+  },
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "prettier.eslintIntegration": true,
+  "eslint.run": "onSave",
+  "eslint.alwaysShowStatus": true,
+  "vetur.validation.template": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "node_modules/": true,
+    ".nuxt/": true,
+    ".codeclimate.yml": true,
+    ".travis.yml": true,
+    "license": true,
+    "package-lock.json": true,
+    "readme.md": true,
+    ".editorconfig": true,
+    ".prettierrc": true,
+    "jsconfig.json": true,
+    ".babelrc": true,
+    "yarn-error.log": true,
+    ".eslintrc.js": true,
+    ".gitignore": true,
+    "jest.config.js": true,
+    "README.md": true,
+    "yarn.lock": true,
+    ".next": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

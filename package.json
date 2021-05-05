@@ -1,0 +1,57 @@
+{
+  "name": "jobguy-company",
+  "version": "1.0.0",
+  "author": "Job guy",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "yarn lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^23.0.0",
+    "@ckeditor/ckeditor5-ckfinder": "^23.0.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.3",
+    "@nuxtjs/axios": "^5.12.4",
+    "@nuxtjs/pwa": "^3.3.2",
+    "cookie-universal-nuxt": "^2.1.4",
+    "element-ui": "^2.14.1",
+    "filepond": "^4.25.1",
+    "filepond-plugin-file-validate-type": "^1.2.5",
+    "filepond-plugin-image-preview": "^4.6.4",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "nuxt": "^2.14.12",
+    "uuid-by-string": "^3.0.2",
+    "vue-filepond": "^6.0.3",
+    "vue-image-crop-upload": "^2.5.0",
+    "vue-masonry": "^0.12.0"
+  },
+  "devDependencies": {
+    "@babel/runtime-corejs2": "^7.6.2",
+    "@nuxtjs/eslint-config": "^1.1.2",
+    "@nuxtjs/eslint-module": "^1.1.0",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-runtime": "^6.26.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-nuxt": ">=0.4.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.8",
+    "lint-staged": "^9.4.2",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^1.18.2",
+    "sass-loader": "^10.1.0"
+  }
+}

@@ -1,0 +1,69 @@
+.nice-scroll {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-track-color: #555;
+  scrollbar-shadow-color: #555;
+  scrollbar-base-color: #777;
+  scrollbar-arrow-color: #777;
+  scrollbar-color: #777 #555;
+  scrollbar-width: thin;
+}
+
+.nice-scroll::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+
+.nice-scroll::-webkit-scrollbar {
+  width: 6px;
+  background: #555;
+  border-radius: 0;
+}
+
+.nice-scroll::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 0;
+}
+
+.nice-scroll:hover::-webkit-scrollbar-thumb {
+  background: $main-color;
+}
+
+.nice-scroll::-webkit-scrollbar-thumb:hover {
+  background: $main-color;
+}
+
+.nice-scroll-mini {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-track-color: #555;
+  scrollbar-shadow-color: #555;
+  scrollbar-base-color: #777;
+  scrollbar-arrow-color: #777;
+  scrollbar-color: #777 #555;
+  scrollbar-width: thin;
+}
+
+.nice-scroll-mini::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+
+.nice-scroll-mini::-webkit-scrollbar {
+  width: 3px;
+  background: #555;
+  border-radius: 0;
+}
+
+.nice-scroll-mini::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 0;
+}
+
+.nice-scroll-mini:hover::-webkit-scrollbar-thumb {
+  background: $main-color;
+}
+
+.nice-scroll-mini::-webkit-scrollbar-thumb:hover {
+  background: $main-color;
+}

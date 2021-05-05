@@ -1,0 +1,125 @@
+$sizes: 100;
+
+@mixin margin-classes {
+  @for $i from 0 through $sizes {
+    $margin: $i * 1px;
+    /* margin #{$margin} */
+    .m-#{$i} {
+      margin: $margin;
+    }
+    .ml-#{$i} {
+      margin-left: $margin;
+    }
+    .mr-#{$i} {
+      margin-right: $margin;
+    }
+    .mt-#{$i} {
+      margin-top: $margin;
+    }
+    .mb-#{$i} {
+      margin-bottom: $margin;
+    }
+    .mx-#{$i} {
+      margin-left: $margin;
+      margin-right: $margin;
+    }
+    .my-#{$i} {
+      margin-top: $margin;
+      margin-bottom: $margin;
+    }
+  }
+}
+@include margin-classes;
+
+@mixin padding-classes {
+  @for $i from 0 through $sizes {
+    $padding: $i * 1px;
+    /* padding #{$padding} */
+    .p-#{$i} {
+      padding: $padding;
+    }
+    .pl-#{$i} {
+      padding-left: $padding;
+    }
+    .pr-#{$i} {
+      padding-right: $padding;
+    }
+    .pt-#{$i} {
+      padding-top: $padding;
+    }
+    .pb-#{$i} {
+      padding-bottom: $padding;
+    }
+    .px-#{$i} {
+      padding-left: $padding;
+      padding-right: $padding;
+    }
+    .py-#{$i} {
+      padding-top: $padding;
+      padding-bottom: $padding;
+    }
+  }
+}
+@include padding-classes;
+
+.error {
+  clear: both;
+  width: 100%;
+  color: #fc6180;
+  margin-top: 3px;
+}
+
+input.input-error,
+textarea.input-error,
+.input-error textarea,
+.input-error input,
+.input-error:focus {
+  color: #5c6873;
+  background-color: #fff;
+  border-color: #fc6180 !important;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.15);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.15);
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.deleted-row {
+  background-color: rgba(245, 108, 108, 0.0784313725490196) !important;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.full-width-reset {
+  width: 100vw !important;
+  @media (min-width: 992px) {
+    margin-left: calc(-100vw / 2 + 537px / 2);
+    margin-right: calc(-100vw / 2 + 537px / 2);
+  }
+  @media (min-width: 1200px) {
+    margin-left: calc(-100vw / 2 + 717px / 2);
+    margin-right: calc(-100vw / 2 + 717px / 2);
+  }
+}

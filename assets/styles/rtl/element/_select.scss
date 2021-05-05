@@ -1,0 +1,23 @@
+.el-select-dropdown {
+  .el-select-dropdown__item {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected::after {
+  right: auto !important;
+  left: 20px !important;
+}
+
+.el-select {
+  .el-select__tags {
+    margin-right: 30px;
+    .el-tag {
+      direction: ltr;
+      .el-select__tags-text {
+        direction: rtl;
+      }
+    }
+  }
+}
