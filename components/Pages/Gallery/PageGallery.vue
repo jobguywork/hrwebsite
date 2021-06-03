@@ -57,7 +57,8 @@ export default {
   data() {
     return {
       form: {
-        gallery: []
+        gallery: [],
+        loading: false
       }
     }
   },
@@ -80,18 +81,24 @@ export default {
       })
     },
     async onUpdate() {
-      const isNotValid = find(this.form.gallery, { description: null })
+      const isNotValid = find(this.form.gallery, { description: '' })
 
       if (!isNotValid) {
-        const ID = this.$currentUser.admin_of_company.id
-        await this.$axios.$patch(`/company/${ID}/update/`, {
-          gallery: this.form.gallery
-        })
+        try {
+          this.loading = true
+          const ID = this.$currentUser.admin_of_company.id
+          await this.$axios.$patch(`/company/${ID}/update/`, {
+            gallery: this.form.gallery
+          })
 
-        this.$notify({
-          message: 'گالری با موفقیت ذخیره شد.',
-          type: 'success'
-        })
+          this.$notify({
+            message: 'گالری با موفقیت ذخیره شد.',
+            type: 'success'
+          })
+        } catch (error) {
+        } finally {
+          this.loading = false
+        }
       } else {
         this.$notify({
           message: 'لطفا توضیحات تصاویر را پر کنید.',
