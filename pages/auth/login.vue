@@ -3,7 +3,13 @@
     <div class="wrap-auth rtl">
       <h1 class="welcome text-center mb-20">خوش آمدید!</h1>
       <ElCard v-loading="loading" class="box-auth">
-        <el-form ref="form" :model="form" :rules="rules">
+        <el-form
+          ref="form"
+          type="post"
+          :model="form"
+          :rules="rules"
+          @submit.native.prevent="onSubmit"
+        >
           <div class="form layout-v">
             <!-- email -->
             <el-form-item prop="email" class="field">
@@ -14,7 +20,7 @@
                 name="email"
                 class="ltr"
                 placeholder="e.g name@company.com"
-              ></ElInput>
+              />
             </el-form-item>
             <!-- /email -->
 
@@ -28,7 +34,7 @@
                 type="password"
                 class="ltr"
                 placeholder="******"
-              ></ElInput>
+              />
             </div>
             <!-- /password -->
 
@@ -36,9 +42,9 @@
             <div class="field submit">
               <ElButton
                 :loading="loading"
+                native-type="submit"
                 class="full-width"
                 type="primary"
-                @click="submit"
               >
                 ورود
               </ElButton>
@@ -79,12 +85,19 @@ export default {
             message: 'آدرس صحیح وارد نمایید',
             trigger: ['blur', 'change']
           }
+        ],
+        password: [
+          {
+            required: true,
+            message: 'این فیلد اجباری است.',
+            trigger: 'blur'
+          }
         ]
       }
     }
   },
   methods: {
-    async submit() {
+    async onSubmit() {
       try {
         this.loading = true
         const { data } = await this.$axios.$post(

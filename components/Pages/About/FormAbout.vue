@@ -1,5 +1,12 @@
 <template>
-  <el-form ref="form" :model="form" :rules="rules" class="about-form">
+  <el-form
+    ref="form"
+    v-loading.fullscreen.lock="loading"
+    :model="form"
+    :rules="rules"
+    class="about-form"
+    @submit.native.prevent="onSubmit"
+  >
     <!-- info -->
     <div
       v-if="cover"
@@ -172,7 +179,7 @@
       <!-- /body -->
     </el-card>
 
-    <ElButton type="primary" @click="submit">بروزرسانی</ElButton>
+    <ElButton type="primary" @click="onSubmit">بروزرسانی</ElButton>
   </el-form>
 </template>
 
@@ -257,7 +264,8 @@ export default {
         height: 300,
         language: 'fa'
       },
-      model: 'شرکت اسنپ.'
+      model: 'شرکت اسنپ.',
+      loading: false
     }
   },
   computed: {
@@ -270,40 +278,50 @@ export default {
   },
   methods: {
     async getCompany() {
-      const slug = this.$currentUser.admin_of_company.company_slug
-      const { data } = await this.$axios.$get(`/public/company/${slug}/`)
-      this.form = data
-      if (data.founded === 'سال نامشخص') {
-        this.form.founded = null
-      } else {
-        this.form.founded = moment(this.form.founded, 'YYYY').toISOString()
+      try {
+        this.loading = true
+        const slug = this.$currentUser.admin_of_company.company_slug
+        const { data } = await this.$axios.$get(`/public/company/${slug}/`)
+        this.form = data
+        if (data.founded === 'سال نامشخص') {
+          this.form.founded = null
+        } else {
+          this.form.founded = moment(this.form.founded, 'YYYY').toISOString()
+        }
+      } catch (error) {
+      } finally {
+        this.loading = false
       }
     },
-    submit() {
-      this.$refs.form.validate(async (valid) => {
-        if (valid) {
-          try {
-            const ID = this.$currentUser.admin_of_company.id
-            if (this.form.founded === 'سال نامشخص') {
-              delete this.form.founded
-            } else {
-              this.form.founded = moment(this.form.founded).format('YYYY-MM-DD')
-            }
-            if (this.form.tell === '') {
-              delete this.form.tell
-            }
-            delete this.form.gallery
-            this.form.benefit = this.form.benefit.map((item) => {
-              return { name: item }
-            })
-            await this.$axios.$put(`/company/${ID}/update/`, this.form)
-            this.$notify({
-              message: 'اطلاعات با موفقیت ذخیره شد.',
-              type: 'success'
-            })
-          } catch (error) {}
+    async onSubmit() {
+      const valid = await this.$refs.form.validate()
+
+      if (!valid) return false
+
+      try {
+        this.loading = true
+        const ID = this.$currentUser.admin_of_company.id
+        if (this.form.founded === 'سال نامشخص') {
+          delete this.form.founded
+        } else {
+          this.form.founded = moment(this.form.founded).format('YYYY-MM-DD')
         }
-      })
+        if (this.form.tell === '') {
+          delete this.form.tell
+        }
+        delete this.form.gallery
+        this.form.benefit = this.form.benefit.map((item) => {
+          return { name: item }
+        })
+        await this.$axios.$put(`/company/${ID}/update/`, this.form)
+        this.$notify({
+          message: 'اطلاعات با موفقیت ذخیره شد.',
+          type: 'success'
+        })
+      } catch (error) {
+      } finally {
+        this.loading = false
+      }
     }
   }
 }
