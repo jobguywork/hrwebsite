@@ -1,5 +1,5 @@
 <template>
-  <div class="page-gallery">
+  <div v-loading.fullscreen.lock="loading" class="page-gallery">
     <!-- form-upload -->
     <div class="form-upload mb-20 ltr">
       <client-only>
@@ -56,9 +56,9 @@ export default {
   },
   data() {
     return {
+      loading: false,
       form: {
-        gallery: [],
-        loading: false
+        gallery: []
       }
     }
   },
